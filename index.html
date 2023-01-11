@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <title>Visa Status</title>
+    <style>
+      /* Add some styles to the website */
+      body {
+        font-family: Arial, sans-serif;
+      }
+      header {
+        background-color: #333;
+        color: white;
+        /* text-align: center; */
+        /* padding: 0.5em; */
+      }
+
+      /* footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 0.5em;
+      } */
+      footer {
+        /* position:
+      absolute; */
+        font-size: 10px; /* width: 100%; text-align: center; */
+        position: fixed;
+        /* left: 5em; */
+        bottom: 1em;
+        /* margin-left: 50em; */
+        text-align: center;
+        /* padding: 0.5em; */
+        color: rgb(62, 26, 207);
+        background-color: rgb(228, 185, 185);
+      }
+      .reference-box {
+        display: none;
+        padding: 1em;
+        background-position-x: center;
+        border: 1px solid black; /* 1px solid black border */
+        width: 66.66667vw; /* 2/3 of the viewport width */
+        height: 10em; /* finger-size height */
+      }
+
+      .text-center {
+        width: 80%; /* set the width to 80% of the viewport width */
+        margin: auto; /* center the element horizontally */
+      }
+      .container.my-5 {
+        width: 80%;
+        margin: auto;
+      }
+      .hidden {
+        display: none;
+      }
+
+      .show {
+        display: block;
+      }
+      .d-flex {
+        justify-content: flex-end;
+      }
+      .nav.navbar {
+        background-color: #87ceeb; /* dark sky blue */
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <!-- <a class="navbar-brand" href="#">My Website</a> -->
+        <a class="navbar-brand"> ShenganEasy</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <!-- <ul class="navbar-nav">
+             -->
+          <ul class="navbar-nav d-flex">
+            <li class="nav-item" id="ShenFlag">
+              <a class="nav-link">Track</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container my-5">
+      <main>
+        <form>
+          <label for="reference-number">Reference Number:</label>
+          <input type="text" id="reference-number" name="reference-number" />
+          <button type="button" onclick="checkReferenceNumber()">
+            einreichen
+          </button>
+        </form>
+        <div id="reference-content" class="reference-box">
+          <!-- The reference content will be displayed here -->
+        </div>
+
+        <div id="welcomeIs">
+          <h1>Track your application status!</h1>
+          <p class="text-header">
+            Bitte geben Sie hier Ihre Visumantragsnummer ein, um den Status zu
+            überprüfen
+          </p>
+        </div>
+      </main>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p class="text-center">Copyright &copy; 2023, Auslander behorde.de</p>
+      </div>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.js"
+      integrity="sha512-nO7wgHUoWPYGCNriyGzcFwPSF+bPDOR+NvtOYy2wMcWkrnCNPKBcFEkU80XIN14UVja0Gdnff9EmydyLlOL7mQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      // The reference data
+      const referenceData = {
+        SELMA:
+          'Sie erhalten eine E-Mail-Benachrichtigung, wenn Ihre Entscheidung an das Schengen-Visumantragszentrum zurückgesendet wurde..',
+
+        PENELOPE:
+          'Sie erhalten eine E-Mail-Benachrichtigung, wenn Ihre Entscheidung an das Schengen-Visumantragszentrum zurückgesendet wurde.',
+      };
+
+      function checkReferenceNumber() {
+        // Get the reference number from the input field
+        const referenceNumber =
+          document.querySelector('#reference-number').value;
+
+        // Check if the reference number exists in the reference data
+        if (referenceData.hasOwnProperty(referenceNumber)) {
+          // Display the reference content
+          document.querySelector('#reference-content').innerHTML =
+            referenceData[referenceNumber];
+          if (welcomeIs) {
+            setTimeout(() => {
+              document.querySelector('#reference-content').style.display =
+                'block';
+            }, 1500);
+            const welcomeIs = document.querySelector('#welcomeIs');
+            welcomeIs.classList.add('hidden');
+          }
+        } else {
+          // Hide the reference content
+          document.querySelector('#reference-content').style.display = 'none';
+          const welcomeIs = document.querySelector('#welcomeIs');
+          if (welcomeIs) {
+            welcomeIs.classList.add('show');
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
