@@ -15,6 +15,7 @@
       /* Add some styles to the website */
       body {
         font-family: Arial, sans-serif;
+        min-height: 100vh; /* this will ensure that the body is at least the full height of the viewport */
       }
       header {
         background-color: #333;
@@ -23,24 +24,17 @@
         /* padding: 0.5em; */
       }
 
-      /* footer {
-        background-color: #333;
-        color: white;
+      footer {
+        position: absolute;
+
+        font-size: 8px; /* width: 100%; text-align: center; */
+        bottom: 0em;
+        /* margin-bottom: 1em; */
         text-align: center;
         padding: 0.5em;
-      } */
-      footer {
-        /* position:
-      absolute; */
-        font-size: 10px; /* width: 100%; text-align: center; */
-        position: fixed;
-        /* left: 5em; */
-        bottom: 1em;
-        /* margin-left: 50em; */
-        text-align: center;
-        /* padding: 0.5em; */
         color: rgb(62, 26, 207);
         background-color: rgb(228, 185, 185);
+        width: 100%; /* make the footer span the full width of the browser window */
       }
       .reference-box {
         display: none;
@@ -69,8 +63,48 @@
       .d-flex {
         justify-content: flex-end;
       }
+
       .nav.navbar {
         background-color: #87ceeb; /* dark sky blue */
+      }
+      #getSur {
+        /* width: 40%; */
+        /* margin: auto; */
+        justify-content: center;
+      }
+      .flag {
+        margin: auto;
+        width: 40px;
+        height: 30px;
+        overflow: hidden;
+        border-radius: 5px;
+      }
+      .stripe {
+        display: block;
+        width: 100%;
+        height: 33.3%;
+      }
+      .black {
+        background-color: #000000;
+      }
+      .red {
+        background-color: #ff0000;
+      }
+      .gold {
+        background-color: #ffcc00;
+      }
+
+      .list-group {
+        /* align-items: center;
+         */
+        position: relative;
+
+        margin-top: 2em; /* or any value as per your need */
+
+        text-align: center;
+
+        font-size: 0.6rem;
+        color: blue;
       }
     </style>
   </head>
@@ -78,7 +112,7 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-info">
         <!-- <a class="navbar-brand" href="#">My Website</a> -->
-        <a class="navbar-brand"> ShenganEasy</a>
+        <!-- <a class="navbar-brand"> ShenganEasy</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -89,13 +123,19 @@
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
-        </button>
+        </button> -->
+
+        <div class="flag">
+          <span class="black stripe"></span>
+          <span class="red stripe"></span>
+          <span class="gold stripe"></span>
+        </div>
         <div class="collapse navbar-collapse" id="navbarNav">
           <!-- <ul class="navbar-nav">
              -->
           <ul class="navbar-nav d-flex">
             <li class="nav-item" id="ShenFlag">
-              <a class="nav-link">Track</a>
+              <!-- <a class="nav-link">Track</a> -->
             </li>
           </ul>
         </div>
@@ -105,7 +145,33 @@
     <div class="container my-5">
       <main>
         <form>
-          <label for="reference-number">Reference Number:</label>
+          <label for="sur-name">Surname:</label>
+          <input type="text" id="getSur" name="sur-name" />
+
+          <br />
+          <select id="dropdown"></select>
+          <script>
+            fetch('https://restcountries.com/v2/all')
+              .then((response) => response.json())
+              .then((data) => {
+                var select = document.getElementById('dropdown');
+                var placeholder = document.createElement('option');
+                placeholder.value = 'Select Country';
+                placeholder.text = 'Select Country';
+                placeholder.disabled = true;
+                placeholder.selected = true;
+                select.appendChild(placeholder);
+                data.forEach(function (country) {
+                  var option = document.createElement('option');
+                  option.value = country.name;
+                  option.text = country.name;
+                  select.appendChild(option);
+                });
+                select.setAttribute('required', true);
+              });
+          </script>
+          <br />
+          <label for="reference-number">Passport Number:</label>
           <input type="text" id="reference-number" name="reference-number" />
           <button type="button" onclick="checkReferenceNumber()">
             einreichen
@@ -116,7 +182,6 @@
         </div>
 
         <div id="welcomeIs">
-          <h1>Track your application status!</h1>
           <p class="text-header">
             Bitte geben Sie hier Ihre Visumantragsnummer ein, um den Status zu
             überprüfen
@@ -124,6 +189,22 @@
         </div>
       </main>
     </div>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <a href="https://www.berlin.de/einwanderung/">Berlin Immigration</a>
+      </li>
+      <li class="list-group-item">
+        <a href="https://www.bundesregierung.de/breg-en"
+          >German Federal Government</a
+        >
+      </li>
+      <li class="list-group-item">
+        <a href="https://www.auswaertiges-amt.de/en">German Foreign Office</a>
+      </li>
+      <li class="list-group-item">
+        <a href="https://www.daad.de/en/">German Academic Exchange Service</a>
+      </li>
+    </ul>
 
     <footer>
       <div class="container">
@@ -141,6 +222,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+
     <script>
       // The reference data
       const referenceData = {
