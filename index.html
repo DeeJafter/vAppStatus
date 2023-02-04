@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -297,71 +298,50 @@
       const referenceData = {
         R3270929: {
           SurName: 'Rajan',
-          message: 'Passinhaber von R3270929 RAJAN.',
+          country: 'India',
+          successMessage: 'Passinhaber von R3270929 RAJAN.',
         },
         N1936164: {
-          PassprNo: 'Hakim S Singh',
-          message: 'Passinhaber von R3270929 RAJANioo',
+          SurName: 'Hakim S Singh',
+          country: 'Germany',
+          successMessage: 'Passinhaber von R3270929 RAJANioo',
         },
+        errorMessage: `Couldn't find the data, please re-check the details`
       };
 
+      
       function checkReferenceNumber() {
-        // Get the reference number from the input field
-        const referenceNumber =
-          // document.querySelector('#reference-number').value;
-          document.querySelector('#reference-number').value;
-        // Get the reference number from the input field
-        const surName =
-          // document.querySelector('#reference-number').value;
-          document.querySelector('#getSur').value;
+        const referenceNumber = document.querySelector('#reference-number').value;
+        const surName = document.querySelector('#getSur').value;
+        const referenceContent = document.querySelector("#reference-content")
+        const welcomeMsg = document.querySelector("#welcomeIs")
+        const optValue = document.querySelector("#dropdown").value
 
-        // Check if the reference number exists in the reference data
-        // if (referenceData.hasOwnProperty(referenceNumber)) {
-        // if (referenceData.hasOwnProperty(surName)) {
-        //   // Display the reference content
-        //   document.querySelector('#reference-content').innerHTML =
-        //     referenceData[surName];
-        //   if (welcomeIs) {
-        //     setTimeout(() => {
-        //       document.querySelector('#reference-content').style.display =
-        //         'block';
-        //     }, 1500);
-        //     const welcomeIs = document.querySelector('#welcomeIs');
-        //     welcomeIs.classList.add('hidden');
-        //   }
-        // } else {
-        //   // Hide the reference content
-        //   document.querySelector('#reference-content').style.display = 'none';
-        //   const welcomeIs = document.querySelector('#welcomeIs');
-        //   if (welcomeIs) {
-        //     welcomeIs.classList.add('show');
-        //   }
-        // }
-        if (referenceData.hasOwnProperty(surName)) {
-          const reference = referenceData[surName];
-          if (reference.hasOwnProperty(referenceNumber)) {
-            // Display the reference content
-            document.querySelector(
-              '#reference-content'
-            ).innerHTML = ` Message: ${reference.message}`;
-          }
-          if (welcomeIs) {
-            setTimeout(() => {
-              document.querySelector('#reference-content').style.display =
-                'block';
-            }, 1500);
-            const welcomeIs = document.querySelector('#welcomeIs');
-            welcomeIs.classList.add('hidden');
-          }
-        } else {
-          // Hide the reference content
-          document.querySelector('#reference-content').style.display = 'none';
-          const welcomeIs = document.querySelector('#welcomeIs');
-          if (welcomeIs) {
-            welcomeIs.classList.add('show');
-          }
+
+        let found = false;
+
+for (const key in referenceData) {
+  if (key === referenceNumber && referenceData[key].SurName === surName && referenceData[key].country === optValue) {
+    found = true;
+    break;
+  }
+}
+
+console.log(found)
+
+      
+        if(found){
+            referenceContent.style.display = 'block'
+            referenceContent.textContent = referenceData[referenceNumber].successMessage
+            welcomeMsg.style.display = 'none'
+        }
+        else{
+            referenceContent.style.display = 'block'
+            referenceContent.textContent = referenceData.errorMessage
+            welcomeMsg.style.display = 'block' // set it to none if you want to hide it
         }
       }
+
     </script>
   </body>
 </html>
