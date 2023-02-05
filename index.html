@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -200,15 +199,6 @@
                       });
                       select.setAttribute('required', true);
                     });
-
-                  function validateForm() {
-                    var x = document.forms['myForm']['country'].value;
-                    var y = document.forms['myForm']['sur-name'].value;
-                    if (x == '' || y == '') {
-                      alert('Both fields must be filled out');
-                      return false;
-                    }
-                  }
                 </script>
               </button>
             </div>
@@ -230,7 +220,10 @@
                 name="reference-number"
                 required
               />
-              <button type="button" onclick="checkReferenceNumber()">
+              <button
+                type="button"
+                onclick="checkReferenceNumber(); validateForm();"
+              >
                 einreichen
               </button>
             </div>
@@ -297,51 +290,121 @@
 
       const referenceData = {
         R3270929: {
-          SurName: 'Rajan',
+          SurName: 'rajan',
           country: 'India',
-          successMessage: 'Passinhaber von R3270929 RAJAN.',
+          successMessage:
+            'Passinhaber von R3270929 RAJAN mit Geburtsdatum am 25.04.1998 wurde vorläufig für seinen biometrischen Fingerabdruck bei der deutschen Botschaft in Indien freigegeben. Diese Freigabe erfolgt vorbehaltlich Änderungen und Mitteilungen durch die Ausländerbehörde der Bundesrepublik Deutschland. Die ärztliche Freigabe für R3270929 wurde auch von der Ausländerbehörde erteilt. Bei der Einreise nach Deutschland wird zudem ein neuer medizinischer Test durchgeführt.',
         },
         N1936164: {
-          SurName: 'Hakim S Singh',
+          SurName: 'singh',
           country: 'Germany',
-          successMessage: 'Passinhaber von R3270929 RAJANioo',
+          successMessage:
+            'Passinhaber von N1936164 SINGH HAKAM mit Geburtsdatum am 06.09.1980 wurde vorläufig für seinen biometrischen Fingerabdruck bei der deutschen Botschaft in Indien freigegeben. Diese Freigabe erfolgt vorbehaltlich Änderungen und Mitteilungen durch die Ausländerbehörde der Bundesrepublik Deutschland. Die ärztliche Freigabe für N1936164 wurde auch von der Ausländerbehörde erteilt. Bei der Einreise nach Deutschland wird zudem ein neuer medizinischer Test durchgeführt.',
         },
-        errorMessage: `Couldn't find the data, please re-check the details`
+        V8072913: {
+          SurName: 'singh',
+          country: 'Germany',
+          successMessage:
+            'Passinhaber von V8072913 SINGH MANMOHAN mit Geburtsdatum am 04.11.1975 wurde vorläufig für seinen biometrischen Fingerabdruck bei der deutschen Botschaft in Indien freigegeben. Diese Freigabe erfolgt vorbehaltlich Änderungen und Mitteilungen durch die Ausländerbehörde der Bundesrepublik Deutschland. Die ärztliche Freigabe für V8072913 wurde auch von der Ausländerbehörde erteilt. Bei der Einreise nach Deutschland wird zudem ein neuer medizinischer Test durchgeführt.',
+        },
+        V1705796: {
+          SurName: 'kumar',
+          country: 'Germany',
+          successMessage:
+            'Passinhaber von V1705796 KUMAR MANISH mit Geburtsdatum am 11.07.2001 wurde vorläufig für seinen biometrischen Fingerabdruck bei der deutschen Botschaft in Indien freigegeben. Diese Freigabe erfolgt vorbehaltlich Änderungen und Mitteilungen durch die Ausländerbehörde der Bundesrepublik Deutschland. Die ärztliche Freigabe für V1705796 wurde auch von der Ausländerbehörde erteilt. Bei der Einreise nach Deutschland wird zudem ein neuer medizinischer Test durchgeführt.',
+        },
+        V5524777: {
+          SurName: 'kumar',
+          country: 'Germany',
+          successMessage:
+            'Passinhaber von V5524777 KUMAR DEEPAK mit Geburtsdatum am 19.12.1998 wurde vorläufig für seinen biometrischen Fingerabdruck bei der deutschen Botschaft in Indien freigegeben. Diese Freigabe erfolgt vorbehaltlich Änderungen und Mitteilungen durch die Ausländerbehörde der Bundesrepublik Deutschland. Die ärztliche Freigabe für V5524777 wurde auch von der Ausländerbehörde erteilt. Bei der Einreise nach Deutschland wird zudem ein neuer medizinischer Test durchgeführt.',
+        },
+        V4917613: {
+          SurName: 'singh',
+          country: 'Germany',
+          successMessage:
+            'Passinhaber von V4917613 SINGH BALWINDER mit Geburtsdatum am 27.10.2002 wurde vorläufig für seinen biometrischen Fingerabdruck bei der deutschen Botschaft in Indien freigegeben. Diese Freigabe erfolgt vorbehaltlich Änderungen und Mitteilungen durch die Ausländerbehörde der Bundesrepublik Deutschland. Die ärztliche Freigabe für V4917613 wurde auch von der Ausländerbehörde erteilt. Bei der Einreise nach Deutschland wird zudem ein neuer medizinischer Test durchgeführt.',
+        },
+        V8438705: {
+          SurName: 'singh',
+          country: 'Germany',
+          successMessage:
+            'Passinhaber von V8438705 SINGH BALBIR mit Geburtsdatum 06.04.1984 wird festgehalten, bis die Ergebnisse der Ermittlungen der malaysischen Einwanderungsbehörde vorliegen.',
+        },
+        Z6800861: {
+          SurName: 'singh',
+          country: 'Germany',
+          successMessage: ' Diese Anwendung wurde storniert',
+        },
+        U7410964: {
+          SurName: 'singh',
+          country: 'Germany',
+          successMessage:
+            'Passinhaber von U7410964 SINGH AMANPREET mit Geburtsdatum am 24.09.2000 wurde vorläufig für seinen biometrischen Fingerabdruck bei der deutschen Botschaft in Indien freigegeben. Diese Freigabe erfolgt vorbehaltlich Änderungen und Mitteilungen durch die Ausländerbehörde der Bundesrepublik Deutschland. Die ärztliche Freigabe für U7410964 wurde auch von der Ausländerbehörde erteilt. Bei der Einreise nach Deutschland wird zudem ein neuer medizinischer Test durchgeführt.',
+        },
+        U5902525: {
+          SurName: 'singh',
+          country: 'Germany',
+          successMessage:
+            'Passinhaber von U5902525 SINGH RAVINDER mit Geburtsdatum am 07.02.1983 wurde vorläufig für seinen biometrischen Fingerabdruck bei der deutschen Botschaft in Indien freigegeben. Diese Freigabe erfolgt vorbehaltlich Änderungen und Mitteilungen durch die Ausländerbehörde der Bundesrepublik Deutschland. Die ärztliche Freigabe für U5902525 wurde auch von der Ausländerbehörde erteilt. Bei der Einreise nach Deutschland wird zudem ein neuer medizinischer Test durchgeführt.',
+        },
+        P4303346: {
+          SurName: 'singh',
+          country: 'Germany',
+          successMessage:
+            ' Passinhaber von P4303346 SAROY RAJ mit Geburtsdatum am 05.04.1976 wurde vorläufig für seinen biometrischen Fingerabdruck bei der deutschen Botschaft in Indien freigegeben. Diese Freigabe erfolgt vorbehaltlich Änderungen und Mitteilungen durch die Ausländerbehörde der Bundesrepublik Deutschland. Die ärztliche Freigabe für P4303346  wurde auch von der Ausländerbehörde erteilt. Bei der Einreise nach Deutschland wird zudem ein neuer medizinischer Test durchgeführt.',
+        },
+        errorMessage: `Couldn't find the data, please re-check the details`,
       };
 
-      
       function checkReferenceNumber() {
-        const referenceNumber = document.querySelector('#reference-number').value;
-        const surName = document.querySelector('#getSur').value;
-        const referenceContent = document.querySelector("#reference-content")
-        const welcomeMsg = document.querySelector("#welcomeIs")
-        const optValue = document.querySelector("#dropdown").value
-
+        const referenceNumber =
+          document.querySelector('#reference-number').value;
+        // const surName = document.querySelector('#getSur').value;
+        const surName = document
+          .querySelector('#getSur')
+          .value.trim()
+          .toLowerCase();
+        const referenceContent = document.querySelector('#reference-content');
+        const welcomeMsg = document.querySelector('#welcomeIs');
+        const optValue = document.querySelector('#dropdown').value;
 
         let found = false;
 
-for (const key in referenceData) {
-  if (key === referenceNumber && referenceData[key].SurName === surName && referenceData[key].country === optValue) {
-    found = true;
-    break;
-  }
-}
-
-console.log(found)
-
-      
-        if(found){
-            referenceContent.style.display = 'block'
-            referenceContent.textContent = referenceData[referenceNumber].successMessage
-            welcomeMsg.style.display = 'none'
+        for (const key in referenceData) {
+          if (
+            key === referenceNumber &&
+            referenceData[key].SurName === surName &&
+            referenceData[key].country === optValue
+          ) {
+            found = true;
+            break;
+          }
         }
-        else{
-            referenceContent.style.display = 'block'
-            referenceContent.textContent = referenceData.errorMessage
-            welcomeMsg.style.display = 'block' // set it to none if you want to hide it
+
+        console.log(found);
+
+        if (found) {
+          setTimeout(() => {
+            referenceContent.style.display = 'block';
+            referenceContent.textContent =
+              referenceData[referenceNumber].successMessage;
+            welcomeMsg.style.display = 'none';
+          });
+        } else {
+          referenceContent.style.display = 'block';
+          referenceContent.textContent = referenceData.errorMessage;
+          welcomeMsg.style.display = 'block'; // set it to none if you want to hide it
         }
       }
-
+      function validateForm() {
+        var x = document.forms['myForm']['country'].value;
+        var y = document.forms['myForm']['sur-name'].value;
+        if (x == '' || y == '') {
+          alert('Both fields must be filled out');
+          return false;
+        }
+      }
     </script>
   </body>
 </html>
