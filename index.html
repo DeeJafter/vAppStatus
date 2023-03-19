@@ -282,20 +282,12 @@
       // };
 
       const referenceData = {
-
         R3270929: {
           firstName: 'Rajan',
           SurName: 'rajan',
           country: 'India',
           successMessage:
             'Für den Antragsteller wurde vom Sponsor ein neuer Antrag auf biometrische Fingerabdrücke und Iris-Scan-Zeit und -Datum eingereicht. Die Deutsche Botschaft in Indien teilt Ihnen den frühestmöglichen Termin mit.',
-        },
-  V1079442: {
-          firstName: 'Akash',
-          SurName: 'Gupta',
-          country: 'India',
-          successMessage:
-            'Die Einreichung des Visumantrags für den Hauptantragsteller Akash Gupta wurde nach einer gründlichen Prüfung der akademischen Zeugnisse und Reisedokumente vorläufig genehmigt. Die Deutsche Botschaft in Indien wird nach Bewilligung der anhängigen Anträge im Juni 2023 einen biometrischen Termin für Fingerabdruck- und Irisscans vereinbaren. Antragsteller und Sponsor müssen bis Mai 2023 eine gemeinsame Erklärung beim Grenzschutz einreichen.',
         },
         N1936164: {
           firstName: 'Hakim',
@@ -343,8 +335,7 @@
           firstName: 'Shamsher',
           SurName: 'singh',
           country: 'India',
-          successMessage:
-' Diese Anwendung wurde storniert',
+          successMessage: ' Diese Anwendung wurde storniert',
         },
         U1984356: {
           SurName: 'polista',
@@ -373,6 +364,12 @@
           successMessage:
             ' Für den Antragsteller wurde vom Sponsor ein neuer Antrag auf biometrische Fingerabdrücke und Iris-Scan-Zeit und -Datum eingereicht. Die Deutsche Botschaft in Indien teilt Ihnen den frühestmöglichen Termin mit.',
         },
+        V1079442: {
+          firstName: 'Akash',
+          SurName: 'Gupta',
+          country: 'India',
+          successMessage: ' Die Einreichung des Visumantrags für den Hauptantragsteller Akash Gupta wurde nach einer gründlichen Prüfung der akademischen Zeugnisse und Reisedokumente vorläufig genehmigt.Die Deutsche Botschaft in Indien wird nach Bewilligung der anhängigen Anträge im Juni 2023 einen biometrischen Termin für Fingerabdruck- und Irisscans vereinbaren. Antragsteller und Sponsor müssen bis Mai 2023 eine gemeinsame Erklärung beim Grenzschutz einreichen. ',
+        },
         errorMessage: `Couldn't find the data, please re-check the details`,
       };
 
@@ -384,7 +381,9 @@
           .querySelector('#getSur')
           .value.trim()
           .toLowerCase();
-        const referenceContent = document.querySelector('#reference-content').toUpperCase();
+        const referenceContent = document
+          .querySelector('#reference-content')
+          .toUpperCase();
         const welcomeMsg = document.querySelector('#welcomeIs');
         const optValue = document.querySelector('#dropdown').value;
 
