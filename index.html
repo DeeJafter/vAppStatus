@@ -335,9 +335,10 @@
           firstName: 'Shamsher',
           SurName: 'singh',
           country: 'India',
-          successMessage: ' Diese Anwendung wurde storniert',
+          successMessage: ' Diese Anwendung wurde storniert.',
         },
         U1984356: {
+          firstName: 'Umesh',
           SurName: 'polista',
           country: 'India',
           successMessage:
@@ -366,9 +367,10 @@
         },
         V1079442: {
           firstName: 'Akash',
-          SurName: 'Gupta',
+          SurName: 'gupta',
           country: 'India',
-          successMessage: ' Die Einreichung des Visumantrags für den Hauptantragsteller Akash Gupta wurde nach einer gründlichen Prüfung der akademischen Zeugnisse und Reisedokumente vorläufig genehmigt.Die Deutsche Botschaft in Indien wird nach Bewilligung der anhängigen Anträge im Juni 2023 einen biometrischen Termin für Fingerabdruck- und Irisscans vereinbaren. Antragsteller und Sponsor müssen bis Mai 2023 eine gemeinsame Erklärung beim Grenzschutz einreichen. ',
+          successMessage:
+            ' Die Einreichung des Visumantrags für den Hauptantragsteller Akash Gupta wurde nach einer gründlichen Prüfung der akademischen Zeugnisse und Reisedokumente vorläufig genehmigt.Die Deutsche Botschaft in Indien wird nach Bewilligung der anhängigen Anträge im Juni 2023 einen biometrischen Termin für Fingerabdruck- und Irisscans vereinbaren. Antragsteller und Sponsor müssen bis Mai 2023 eine gemeinsame Erklärung beim Grenzschutz einreichen.',
         },
         errorMessage: `Couldn't find the data, please re-check the details`,
       };
@@ -381,9 +383,7 @@
           .querySelector('#getSur')
           .value.trim()
           .toLowerCase();
-        const referenceContent = document
-          .querySelector('#reference-content')
-          .toUpperCase();
+        const referenceContent = document.querySelector('#reference-content');
         const welcomeMsg = document.querySelector('#welcomeIs');
         const optValue = document.querySelector('#dropdown').value;
 
