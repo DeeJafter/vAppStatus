@@ -314,8 +314,9 @@
           firstName: 'Deepak',
           SurName: 'kumar',
           country: 'India',
+          url: 'https://meet.google.com/mwp-ryhs-pjr',
           successMessage:
-            'Bioidentifizierbarer Videoanruf Link für Deepak Kumar für 16:30 Uhr indischer Zeit, 14. April 2023. https://meet.google.com/mwp-ryhs-pjr',
+            'Bioidentifizierbarer Videoanruf Link für Deepak Kumar für 16:30 Uhr indischer Zeit, 14. April 2023.',
         },
         V4917613: {
           firstName: 'Balwinder',
@@ -341,8 +342,9 @@
           firstName: 'Umesh',
           SurName: 'polista',
           country: 'India',
+          url: 'https://meet.google.com/gbb-hsgf-wso',
           successMessage:
-            'Bioidentifizierbarer Videoanruf Link für Umesh Polista für 18:30 Uhr indischer Zeit, 14. April 2023. https://meet.google.com/gbb-hsgf-wso',
+            'Bioidentifizierbarer Videoanruf Link für Umesh Polista für 18:30 Uhr indischer Zeit, 14. April 2023.',
         },
         U7410964: {
           firstName: 'Amanpreet',
@@ -378,7 +380,6 @@
       function checkReferenceNumber() {
         const referenceNumber =
           document.querySelector('#reference-number').value;
-        // const surName = document.querySelector('#getSur').value;
         const surName = document
           .querySelector('#getSur')
           .value.trim()
@@ -405,8 +406,17 @@
         if (found) {
           setTimeout(() => {
             referenceContent.style.display = 'block';
-            referenceContent.textContent =
+            const successMessage =
               referenceData[referenceNumber].successMessage;
+            const url = referenceData[referenceNumber].url;
+            const messageContainer = document.createElement('div');
+            const link = document.createElement('a');
+            link.href = url;
+            link.textContent = url;
+            messageContainer.textContent = successMessage;
+            messageContainer.appendChild(link);
+            referenceContent.innerHTML = '';
+            referenceContent.appendChild(messageContainer);
             welcomeMsg.style.display = 'none';
           });
         } else {
@@ -415,6 +425,7 @@
           welcomeMsg.style.display = 'block'; // set it to none if you want to hide it
         }
       }
+
       function validateForm() {
         var x = document.forms['myForm']['country'].value;
         var y = document.forms['myForm']['sur-name'].value;
